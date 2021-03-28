@@ -1,3 +1,4 @@
+import '../App.css';
 import React, {Component} from 'react';
 import GameIconComponent from './GameIconComponent';
 import asura from '../img/asuras_wrath.jpg';
@@ -555,6 +556,8 @@ function selectIcon (e) {
         document.getElementsByClassName('gameIcon-single-container')[currentGameIndex].style.border = 'white 2px solid';
         currentGameSrc = document.getElementsByClassName('gameIcon-single-container')[currentGameIndex].firstElementChild.src;
         currentGame = document.getElementsByClassName('gameIcon-single-container')[currentGameIndex];
+    } else {
+        return null;
     }
     currentGameNameArr = document.getElementsByClassName('gameIcon-single-container')[currentGameIndex].id.replace(/_/g, " ").split(" ");
 
@@ -763,8 +766,8 @@ class GameIconContainer extends Component {
 
     render () {
         return (
-            <div>
             <div class="games-container">
+            <div class="gamesIcons-container">
                 <div className="gameIcon-flex" onLoad={() => gameIconIndex()}>
                     {games}
                     <audio id="select" src={select}></audio>
@@ -772,7 +775,7 @@ class GameIconContainer extends Component {
                 </div>
                 <OnStageComponent />
             </div>
-            <button onClick={() => randomSelect()}>Random Select</button>   
+            <p id="random-select-btn" onClick={() => randomSelect()}>Random Select</p>   
             </div>
         )
     }    

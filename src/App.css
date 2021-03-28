@@ -1,11 +1,99 @@
-.App {
-  background-color: #00006F;
-  background-attachment: fixed;
+@font-face {
+  font-family: 'SF2Font';
+  src: url('../src/fonts/street-fighter-zero-3-arcade-1-0.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFLogoFont';
+  src: url('../src/fonts/Act_Of_Rejection.ttf') format('truetype');
+}
+
+
+h1, h2, p {
+  font-family: 'SF2Font';
+}
+
+.cover {
+  background: #00006B;
   min-height: 100vh;
+  text-align: center;
+}
+
+.cover-start {
+  background: -webkit-linear-gradient(#ffb50e 50%, #ffd383 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+}
+
+.cover-logo-container {
+  display: none;
+  justify-content: center;
+}
+
+.cover-logo {
+  font-family: 'SFLogoFont';
+  background: -webkit-linear-gradient(#FDFD00 50%, #dd1d25 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: rotate( -11deg);
+  font-size: 5em;
+}
+
+.cover-select {
+  margin-left: 25%;
+}
+
+.sf-intro {
+  display: none;
+  width: 50%;
+  position: absolute; 
+  left: 25%;
+  bottom: 0%;
+}
+
+.music-container {
+  text-align: center;
+  width: 51%;
+  padding-top: 2%;
+}
+
+.fas {
+  width: 30px;
+  font-size: 2em;
+  color: white;
+}
+
+.fa-pause,
+.fa-stop {
+  margin-left: 3%;
+}
+
+#random-select-btn {
+  background: -webkit-linear-gradient(#FDFD00 50%, #dd1d25 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  width: 51%;
+  font-size: 1.25em;
+  cursor: pointer;
 }
 
 .games-container {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../src/img/sf2_select_screen.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-height: 100vh;
+}
+
+.gamesIcons-container {
   display: flex;
+}
+
+.gameIcon-single-container {
+  /* display: flex; */
 }
 
 .gameIcon-flex {
@@ -32,6 +120,9 @@
 }
 
 #stage-name {
+  background: -webkit-linear-gradient(#ffb50e 50%, #ffd383 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   position: absolute;
   left: 25%;
   top: 0%;
@@ -49,19 +140,27 @@
 }
 
 #vote-ratio {
+  background: -webkit-linear-gradient(#ffb50e 50%, #ffd383 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
     position: absolute;
     bottom: -2%;
     left: 46%;
     width: 100%;
     color: white;
+    font-size: 1.5em;
 }
 
 #stage-stats {
+  background: -webkit-linear-gradient(#ffb50e 50%, #ffd383 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   position: absolute;
   bottom: -10%;
   left: 41%;
   width: 100%;
   color: white;
+  font-size: 1.5em;
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
