@@ -5,12 +5,6 @@ import pause from '../img/pause.png';
 import stop from '../img/stop.png';
 import Sound from 'react-sound';
 
-// let audio = new Audio(soundFile);
-
-// const start = () => {
-//     audio.play()
-// }
-
 function handleMusic () {
     document.getElementById("audio-play").play();
     document.getElementById("audio-play").volume = 0.2;
@@ -29,7 +23,7 @@ class MusicComponent extends Component {
     render () {
         return (
             <div className="music-container">
-                <audio id="audio-play" src={soundFile} loop="loop"></audio>
+                <audio id="audio-play" src={soundFile} loop="loop" autoPlay onPlay={() => document.getElementById("audio-play").volume = 0.25}></audio>
                 <i className="fas fa-play" onClick={() => handleMusic()}></i>
                 <i className="fas fa-pause" onClick={() => pauseMusic()}></i>
                 <i className="fas fa-stop" onClick={() => stopMusic()}></i>

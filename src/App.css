@@ -20,6 +20,7 @@ h1, h2, p {
 }
 
 .cover-start {
+  cursor: pointer;
   background: -webkit-linear-gradient(#ffb50e 50%, #ffd383 65%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -29,13 +30,29 @@ h1, h2, p {
 }
 
 .cover-logo-container {
+  position: relative;
   display: none;
+  opacity: 0;
+  width: 100%;
   justify-content: center;
+}
+
+.cover-continue {
+  position: absolute;
+  bottom: -20%;
+  background: -webkit-linear-gradient(#ffb50e 50%, #ffd383 65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cover-continue h1{
+  border-bottom: #ffb50e 2px solid;
+  cursor: pointer;
 }
 
 .cover-logo {
   font-family: 'SFLogoFont';
-  background: -webkit-linear-gradient(#FDFD00 50%, #dd1d25 65%);
+  background: -webkit-linear-gradient(#FDFD00 22%, #dd1d25 65%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transform: rotate( -11deg);
@@ -84,7 +101,7 @@ h1, h2, p {
 .games-container {
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../src/img/sf2_select_screen.png');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
   min-height: 100vh;
 }
 

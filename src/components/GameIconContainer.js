@@ -77,6 +77,7 @@ import useSound from 'use-sound';
 import select from '../sounds/select_fighter.mp3';
 import selected from '../sounds/street_fighter_choose.mp3';
 import OnStageComponent from './OnStageComponent';
+import MusicComponent from './MusicComponent';
 
 // Calculating weighted random selection
 // - Calculate total up until the concerned/current game
@@ -766,16 +767,17 @@ class GameIconContainer extends Component {
 
     render () {
         return (
-            <div class="games-container">
-            <div class="gamesIcons-container">
-                <div className="gameIcon-flex" onLoad={() => gameIconIndex()}>
-                    {games}
-                    <audio id="select" src={select}></audio>
-                    <audio id="selected" src={selected}></audio>
+            <div className="games-container">
+                <MusicComponent />
+                <div className="gamesIcons-container">
+                    <div className="gameIcon-flex" onLoad={() => gameIconIndex()}>
+                        {games}
+                        <audio id="select" src={select}></audio>
+                        <audio id="selected" src={selected}></audio>
+                    </div>
+                    <OnStageComponent />
                 </div>
-                <OnStageComponent />
-            </div>
-            <p id="random-select-btn" onClick={() => randomSelect()}>Random Select</p>   
+                <p id="random-select-btn" onClick={() => randomSelect()}>Random Select</p>   
             </div>
         )
     }    
