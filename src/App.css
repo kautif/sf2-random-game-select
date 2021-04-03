@@ -8,6 +8,9 @@
   src: url('../src/fonts/Act_Of_Rejection.ttf') format('truetype');
 }
 
+body {
+  overflow-x: hidden;
+}
 
 h1, h2, p {
   font-family: 'SF2Font';
@@ -96,6 +99,7 @@ h1, h2, p {
   width: 51%;
   font-size: 1.25em;
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 .games-container {
@@ -103,6 +107,7 @@ h1, h2, p {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   min-height: 100vh;
+  padding-bottom: 18px;
 }
 
 .gamesIcons-container {
@@ -182,12 +187,120 @@ h1, h2, p {
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .gameIcon-flex {
-    width: 78%;
+    width: 53%;
+  }
+
+  .gameIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  #vote-ratio {
+    font-size: 1.05em;
+  }
+
+  #stage-stats {
+    font-size: 1.1em;
+  }
+
+  #vote-ratio {
+    bottom: 0;
+  }
+
+  #stage-stats {
+    bottom: -7%;
   }
 }
 
 @media (min-width: 768px) and (max-width: 768px) {
   .gameIcon-flex {
-    width: 99%;
+    width: 62%;
+  }
+
+  .gameIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .on-stage {
+    width: 33%;
+  }
+
+  #stage-name {
+    font-size: 1.5em;
+    left: 0%;
+  }
+
+  #on-stage-img {
+    left: 11%;
+    width: 75%;
+  }
+
+  #vote-ratio,
+  #stage-stats {
+    font-size: 1em;
+  }
+
+  #vote-ratio {
+    left: 12%;
+  }
+
+  #stage-stats {
+    left: 15%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .music-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .gamesIcons-container {
+    flex-direction: column;
+  }
+
+  .gameIcon-flex {
+    width: 95%;
+  }
+
+  .gameIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  #random-select-btn {
+    width: 100%;
+  }
+
+  .on-stage {
+    width: 95%;
+  }
+
+  #stage-name {
+    font-size: 1.35em;
+    left: 7%;
+    top: 53px;
+  }
+
+  #on-stage-img {
+    max-height: initial;
+    max-width: 26%;
+    top: 104px;
+    left: 42%;
+  }
+
+  #vote-ratio {
+    font-size: 1em;
+    left: 19%;
+    bottom: initial;
+    top: 236px;
+  }
+
+  #stage-stats {
+    font-size: 1em;
+    left: 23%;
+    bottom: initial;
+    top: 262px;
   }
 }

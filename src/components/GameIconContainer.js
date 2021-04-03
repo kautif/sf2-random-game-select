@@ -529,11 +529,12 @@ function updateStage (gameIndex) {
     for (let k = 0; k < gameNameArr.length; k++) {
         nameArr.push(capitalizeFirstLetter(gameNameArr[k]));
     }
-    currentGame = newName.join(" ");
+    currentGame = nameArr.join(" ");
+    console.log(currentGame);
     nameArr = [];
 
     document.getElementById('stage-name').innerHTML = currentGame;
-    document.getElementById('on-stage-img').src =         currentGameSrc = document.getElementsByClassName('gameIcon-single-container')[gameIndex].firstElementChild.src;;
+    document.getElementById('on-stage-img').src = document.getElementsByClassName('gameIcon-single-container')[gameIndex].firstElementChild.src;;
     winChance = gameVotes[gameID]['votes'] / totalVotes * 100;
     document.getElementById('stage-stats').innerHTML = "Win Chance: " + winChance.toFixed(2) + "%";
     document.getElementById('game-vote').innerHTML = gameVotes[gameID]['votes'];
@@ -741,6 +742,8 @@ class GameIconContainer extends Component {
 
     componentDidMount() {
         document.getElementById('cover-coin').play();
+        let gamesContainer = document.getElementsByClassName('games-container')[0];
+        gamesContainer.style.width = window.outerWidth + 'px';
     }
 
     render () {
