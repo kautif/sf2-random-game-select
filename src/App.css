@@ -152,7 +152,7 @@ h1, h2, p {
   max-height: 71%;
   max-width: 90%;
   position: absolute;
-  top: 20%;
+  top: 14%;
   left: 35%;
 }
 
@@ -161,8 +161,8 @@ h1, h2, p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
     position: absolute;
-    bottom: -2%;
-    left: 46%;
+    bottom: 10%;
+    left: 34%;
     width: 100%;
     color: white;
     font-size: 1.5em;
@@ -173,7 +173,7 @@ h1, h2, p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: absolute;
-  bottom: -10%;
+  bottom: 3%;
   left: 41%;
   width: 100%;
   color: white;
