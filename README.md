@@ -15,6 +15,8 @@
 - "Random Select" below the game select area will move the selector randomly. This is just a performance to simulate randomness. The game is still chosen randomly, but it is not necessary to move the cursor randomly to choose a random game based on the number of votes. It's just for the Street Fighter aesthetic feel (along with the music and select sound effects).
 - Whichever game the selector lands on, that will be the next game that I will play on stream
 - Play, pause, and stop buttons are above the game selection area.
+![image](https://user-images.githubusercontent.com/22201101/113524517-68ab5e80-956c-11eb-8ef0-a0369c1eb891.png)
+
 
 ## Limitations
 - Image files are loaded locally. Images are not being pulled from an API.
