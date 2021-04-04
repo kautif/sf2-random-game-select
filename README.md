@@ -1,4 +1,7 @@
 # Street Fighter 2 Themed Random Game Selector
+- I stream on Twitch. I'm starting to play Kaizo Mario Monday through Thursday, and whatever games viewers use their channel points to vote on Friday through Sunday. Viewers can vote multiple times for the same game. Once I complete a variety game, I'm using this app to random select the next game to play. However, the random selection is voted based on the games which have more votes. They will have a better chance of winning. Sometimes, streamers will use a wheel. I made a select screen that resembles Street Fighter 2.
+
+## Test
 
 # Getting Started with Create React App
 
