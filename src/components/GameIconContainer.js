@@ -15,7 +15,6 @@ import blacksad from '../img/blacksad.jpg';
 import blazing_chrome from '../img/blazing_chrome.png';
 import bloodborne from '../img/bloodborne.jpg';
 import bloodstained_ritual from '../img/bloodstained_ritual.jpg';
-import bloodstained from '../img/bloodstained.png';
 import bushiden from '../img/bushiden.png';
 import carrion from '../img/carrion.jpg';
 import catherine from '../img/catherine.png';
@@ -99,7 +98,7 @@ import MusicComponent from './MusicComponent';
 //              (some other game wins)
 
 let gameIcons = [darksiders, dragon_age, undertale, thirtyxx, aragami, ash_of_gods, ato, baba, banner_saga, batman_arkham_knight, beyond_two_souls, blacksad,
-    blazing_chrome, bloodborne, bloodstained, bloodstained_ritual, bushiden, carrion, catherine, cuphead, cyberfunk, cybershadow, daemon, dead_cells,
+    blazing_chrome, bloodborne, bloodstained_ritual, bushiden, carrion, catherine, cuphead, cyberfunk, cybershadow, daemon, dead_cells,
     dead_space, deus_ex, dishonored, dishonored_2, doom_eternal, exanima, friends_ringo, ghosts_n_goblins, god_of_war, gravity_circuit, gris, harry_potter_chamber_of_secrets, hellpoint, huntdown,
     journey, katana_zero, lit, majoras_mask, mass_builder, mass_effect, mega_man_maker, megaman_legends_2, megaman_streetfighter, metal_gear_solid_5, mighty_fight, mind_seize,
     mortal_shell, observer, one_shot, panzer_paladin, parappa, pedro, poly_bridge, revengeance, salt, samurai_jack, savior, super_mario_64, super_seducer, surge,
@@ -173,11 +172,6 @@ const gameVotes = {
     },
     "bloodborne": {
         votes: 33,
-        running_total: 0,
-        positions: []
-    },
-    "bloodstained": {
-        votes: 62,
         running_total: 0,
         positions: []
     },
