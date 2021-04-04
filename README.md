@@ -2,80 +2,28 @@
 - I stream on Twitch. I'm starting to play Kaizo Mario Monday through Thursday, and whatever games viewers use their channel points to vote on Friday through Sunday. Viewers can vote multiple times for the same game. Once I complete a variety game, I'm using this app to random select the next game to play. However, the random selection is voted based on the games which have more votes. They will have a better chance of winning. Sometimes, streamers will use a wheel. I made a select screen that resembles Street Fighter 2.
 
 ## Press Start
-- Click on Press Start and then an intro with the SF2 music is revealed. 
+- Click on "Press Start" and then an intro with the SF2 music is revealed. 
 
 ![image](https://user-images.githubusercontent.com/22201101/113523985-e0778a00-9568-11eb-86ef-97adeb2134ba.png)
 ![image](https://user-images.githubusercontent.com/22201101/113523989-e5d4d480-9568-11eb-88a5-b833fd07bf8d.png)
 ![image](https://user-images.githubusercontent.com/22201101/113523993-ebcab580-9568-11eb-9b85-a86b27a36ba0.png)
+- Click on "Continue" to proceed to the "player" or game selection screen
 
+## Game Select
+- Press left, right, up, or down to move the selector.
+- When the selector is moved, the title, stats, and image will change accordingly on the right hand side.
+- "Random Select" below the game select area will move the selector randomly. This is just a performance to simulate randomness. The game is still chosen randomly, but it is not necessary to move the cursor randomly to choose a random game based on the number of votes. It's just for the Street Fighter aesthetic feel (along with the music and select sound effects).
+- Whichever game the selector lands on, that will be the next game that I will play on stream
+- Play, pause, and stop buttons are above the game selection area.
 
-# Getting Started with Create React App
+## Limitations
+- Image files are loaded locally. Images are not being pulled from an API.
+- When pressing up or down for the game select area, the select cursor will always move 10 spaces.I made this app mobile responsive, but if this app is being used on a screen size that wasn't accounted for just because there are so many possible screen sizes, its possible that there may be more or less than 10 game icons in a row. This means that the selector will not move straight up or down from where it is originating.
+- When moving the selector to any given row, due to the border, it creates a gap between the row it is on and the row below it
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Updates Planned
+- Use an API like IGDB to retrieve images instead of loading images locally
+- Add authentication so users can create their own profiles
+- Add feature for users to look up games and add the images accordingly or add their own images if the API fails to find them
+- Add feature for users to input how many votes any inputted game has
+- Add feature for users to change music, background, select sound, logo
