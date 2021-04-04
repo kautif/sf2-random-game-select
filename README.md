@@ -1,3 +1,5 @@
+# Street Fighter 2 Themed Random Game Selector
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
