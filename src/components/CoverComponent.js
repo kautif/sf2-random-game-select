@@ -71,7 +71,6 @@ class CoverComponent extends Component {
   
     render () {
         return (
-
             <div className="cover" onLoad={() => flashStart()}>
                 <img className="sf-intro" src={sf_intro} alt="street fighter intro gif" loop="false" />
                 <h1 className="cover-start" onClick={() => startIntro()}>Press Start</h1>
@@ -88,9 +87,7 @@ class CoverComponent extends Component {
                         <Link to="/random_select"><h1>Continue</h1></Link>
                     </div>
                 </div>
-
             </div>
-
         )
     }
 }

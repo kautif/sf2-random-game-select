@@ -2,7 +2,6 @@ import '../App.css';
 import React, {Component} from 'react';
 import GameIconComponent from './GameIconComponent';
 import dragon_age from '../img/dragon_age.png';
-import undertale from '../img/undertale.png';
 import thirtyxx from '../img/30XX.jpg';
 import aragami from '../img/aragami.jpg';
 import ash_of_gods from '../img/ash_of_gods.jpg';
@@ -38,6 +37,7 @@ import gravity_circuit from '../img/gravity_circuit.jpg';
 import gris from '../img/gris.jpg';
 import harry_potter_chamber_of_secrets from '../img/harry_potter_chamber_of_secrets.jpg';
 import hellpoint from '../img/hellpoint.png';
+import hitchhiker from '../img/hitchhiker.jpg';
 import huntdown from '../img/huntdown.jpg';
 import journey from '../img/journey.png';
 import katana_zero from '../img/katana_zero.jpg';
@@ -59,9 +59,12 @@ import parappa from '../img/parappa.jpg';
 import pedro from '../img/pedro.jpg';
 import poly_bridge from '../img/poly_bridge.jpg';
 import revengeance from '../img/revengeance.jpg';
+import ring_fit_adventure from '../img/ring_fit_adventure.jpg';
 import salt from '../img/salt.jpg';
 import samurai_jack from '../img/samurai_jack.jpg';
 import savior from '../img/savior.png';
+import sonic_adventure from '../img/sonic_adventure.png';
+import steamworld_dig_2 from '../img/steamworld_dig_2.jpg';
 import super_mario_64 from '../img/super_mario_64.jpg';
 import super_seducer from '../img/super_seducer.jpg';
 import surge from '../img/surge.jpeg';
@@ -97,11 +100,11 @@ import MusicComponent from './MusicComponent';
 //              - If Math.random lands on any number not in Undertale's array, it doesn't win 
 //              (some other game wins)
 
-let gameIcons = [darksiders, dragon_age, undertale, thirtyxx, aragami, ash_of_gods, ato, baba, banner_saga, batman_arkham_knight, beyond_two_souls, blacksad,
+let gameIcons = [darksiders, dragon_age, thirtyxx, aragami, ash_of_gods, ato, baba, banner_saga, batman_arkham_knight, beyond_two_souls, blacksad,
     blazing_chrome, bloodborne, bloodstained_ritual, bushiden, carrion, catherine, cuphead, cyberfunk, cybershadow, daemon, dead_cells,
-    dead_space, deus_ex, dishonored, dishonored_2, doom_eternal, exanima, friends_ringo, ghosts_n_goblins, god_of_war, gravity_circuit, gris, harry_potter_chamber_of_secrets, hellpoint, huntdown,
+    dead_space, deus_ex, dishonored, dishonored_2, doom_eternal, exanima, friends_ringo, ghosts_n_goblins, god_of_war, gravity_circuit, gris, harry_potter_chamber_of_secrets, hellpoint, huntdown, hitchhiker,
     journey, katana_zero, lit, majoras_mask, mass_builder, mass_effect, mega_man_maker, megaman_legends_2, megaman_streetfighter, metal_gear_solid_5, mighty_fight, mind_seize,
-    mortal_shell, observer, one_shot, panzer_paladin, parappa, pedro, poly_bridge, revengeance, salt, samurai_jack, savior, super_mario_64, super_seducer, surge,
+    mortal_shell, observer, one_shot, panzer_paladin, parappa, pedro, poly_bridge, revengeance, ring_fit_adventure, salt, samurai_jack, savior, sonic_adventure, steamworld_dig_2, super_mario_64, super_seducer, surge,
     surge_2, the_pedestrian, thumper, tomb_raider, um_jammer, valfaris, vampyr, watch_dog, wildfire, windjammers, witcher_3];
 
 const games = [];
@@ -171,7 +174,7 @@ const gameVotes = {
         positions: []
     },
     "bloodborne": {
-        votes: 33,
+        votes: 103,
         running_total: 0,
         positions: []
     },
@@ -187,11 +190,6 @@ const gameVotes = {
     },
     "carrion": {
         votes: 1,
-        running_total: 0,
-        positions: []
-    },
-    "undertale": {
-        votes: 67,
         running_total: 0,
         positions: []
     },
@@ -276,7 +274,7 @@ const gameVotes = {
         positions: []
     },
     "god_of_war": {
-        votes: 3,
+        votes: 4,
         running_total: 0,
         positions: []
     },
@@ -286,7 +284,7 @@ const gameVotes = {
         positions: []
     },
     "gris": {
-        votes: 1,
+        votes: 11,
         running_total: 0,
         positions: []
     },
@@ -296,12 +294,17 @@ const gameVotes = {
         positions: []
     },
     "harry_potter_chamber_of_secrets": {
-        votes: 1,
+        votes: 11,
         running_total: 0,
         positions: []
     },
     "hellpoint": {
         votes: 1,
+        running_total: 0,
+        positions: []
+    },
+    "hitchhiker": {
+        votes: 10,
         running_total: 0,
         positions: []
     },
@@ -326,7 +329,7 @@ const gameVotes = {
         positions: []
     },
     "majoras_mask": {
-        votes: 30,
+        votes: 40,
         running_total: 0,
         positions: []
     },
@@ -410,6 +413,11 @@ const gameVotes = {
         running_total: 0,
         positions: []
     },
+    "ring_fit_adventure": {
+        votes: 109,
+        running_total: 0,
+        positions: []
+    },
     "salt": {
         votes: 11,
         running_total: 0,
@@ -422,6 +430,16 @@ const gameVotes = {
     },
     "savior": {
         votes: 1,
+        running_total: 0,
+        positions: []
+    },
+    "sonic_adventure": {
+        votes: 5,
+        running_total: 0,
+        positions: []
+    },
+    "steamworld_dig_2": {
+        votes: 5,
         running_total: 0,
         positions: []
     },
