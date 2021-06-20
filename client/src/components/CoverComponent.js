@@ -5,18 +5,18 @@ import sf_theme from '../sounds/sf2_theme.mp3';
 import { BrowserRouter as Router, Route, Link, BrowserRouter, Switch, useHistory } from "react-router-dom";
 import GameIconContainer from './GameIconContainer';
 
-function fade(element) {
-    var op = 1;  // initial opacity
-    var timer = setInterval(function () {
-        if (op <= 0.1){
-            clearInterval(timer);
-            element.style.display = 'none';
-        }
-        element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op -= 0.1;
-    }, 2000);
-}
+// function fade(element) {
+//     var op = 1;  // initial opacity
+//     var timer = setInterval(function () {
+//         if (op <= 0.1){
+//             clearInterval(timer);
+//             element.style.display = 'none';
+//         }
+//         element.style.opacity = op;
+//         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+//         op -= 0.1;
+//     }, 2000);
+// }
 
 function unfade(element) {
     var op = 0.1;  // initial opacity
@@ -36,16 +36,16 @@ let repeat = true;
 let flashStart = function () {
     if (repeat) {
         if (showStart) {
-            fade(document.getElementsByClassName("cover-start")[0])
+            // fade(document.getElementsByClassName("cover-start")[0])
             showStart = false;
             setTimeout(function () {
-                flashStart();
+                // flashStart();
             }, 1000)
         } else {
-            unfade(document.getElementsByClassName("cover-start")[0])
+            // unfade(document.getElementsByClassName("cover-start")[0])
             showStart = true;
             setTimeout(function () {
-                flashStart();
+                // flashStart();
             }, 1000)
         }
     } else {
@@ -54,7 +54,7 @@ let flashStart = function () {
 }
 
 function startIntro () {
-    document.getElementsByClassName('cover-start')[0].style.visibility = 'hidden';
+    // document.getElementsByClassName('cover-start')[0].style.visibility = 'hidden';
     document.getElementsByClassName('sf-intro')[0].style.display = 'block';
     document.getElementById('cover-theme').volume = 0.35;
     document.getElementById('cover-theme').play();
@@ -71,10 +71,9 @@ class CoverComponent extends Component {
   
     render () {
         return (
-
-            <div className="cover" onLoad={() => flashStart()}>
+            <div className="cover" onLoad={() => startIntro()}>
                 <img className="sf-intro" src={sf_intro} alt="street fighter intro gif" loop="false" />
-                <h1 className="cover-start" onClick={() => startIntro()}>Press Start</h1>
+                {/* <h1 className="cover-start" onClick={() => startIntro()}>Press Start</h1> */}
                 <audio id="cover-theme" src={sf_theme}></audio>
                 <div className="cover-logo-container">
                     <div>
@@ -84,9 +83,9 @@ class CoverComponent extends Component {
                         <h1 className="cover-logo">Random Game</h1>
                         <h1 className="cover-logo cover-select">Select</h1>
                     </div>
-                    <div className="cover-continue">
+                    {/* <div className="cover-continue">
                         <Link to="/random_select"><h1>Continue</h1></Link>
-                    </div>
+                    </div> */}
                 </div>
 
             </div>

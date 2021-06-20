@@ -16,6 +16,27 @@ h1, h2, p {
   font-family: 'SF2Font';
 }
 
+.nav {
+  text-align: right;
+  background-color: #00006B;
+}
+
+.nav__list {
+  padding-top: 1%;
+  padding-bottom: 2%;
+  margin: 0;
+}
+
+.nav__list__item {
+  display: inline-block;
+  margin-right: 2%;
+  font-size: 2em;
+}
+
+.nav__list__item a {
+  color: white;
+}
+
 .cover {
   background: #00006B;
   min-height: 100vh;
