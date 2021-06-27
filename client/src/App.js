@@ -5,6 +5,7 @@ import MusicComponent from './components/MusicComponent';
 import { BrowserRouter as Router, Route, Link, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import CoverComponent from './components/CoverComponent';
 import NavComponent from './components/NavComponent';
+import RegisterComponent from './components/RegisterComponent';
 
 function App() {
   let isAuth = true;
@@ -15,7 +16,7 @@ function App() {
         <Route exact path="/" component={CoverComponent}></Route>
         <Route path="/random_select" component={GameIconContainer}></Route>
         <Route path="/login"></Route>
-        <Route path="/register"></Route>  
+        <Route path="/register" component={RegisterComponent}></Route>  
       </Router>
       {/* {isAuth ? 
       window.location.href = "http://localhost:3001/api" : 

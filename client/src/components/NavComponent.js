@@ -5,7 +5,7 @@ class NavComponent extends Component {
         return (
             <div class="nav">
                 <ul class="nav__list">
-                    <li class="nav__list__item"><a href="#">Sign Up</a></li>
+                    <li class="nav__list__item"><a href="/register">Sign Up</a></li>
                     <li class="nav__list__item"><a href="#">Login</a></li>
                 </ul>
             </div>

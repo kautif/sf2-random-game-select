@@ -20,72 +20,119 @@
                 // Must be 1 or more votes
         // Edit Game
         // Remove Game
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4000;
 
 const express = require('express');
-// const cors = require("cors");
+const cors = require("cors");
 const mongoose = require('mongoose');
+const passport = require('passport');
+const passportLocal = require('passport-local').Strategy;
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcryptjs');
+const User = require('./models/user');
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
-const passport = require("./Auth");
-
-const app = express();
+const bodyParser = require('body-parser');
+// const MongoStore = require("connect-mongo");
+// const passport = require("./Auth");
 
 // Connect to mongodb
-const dbURI = 'mongodb+srv://test-user:testtest@cluster0.60anv.mongodb.net/sf-app?retryWrites=true&w=majority'
+const dbURI = 'mongodb+srv://test-user:testtest@cluster0.60anv.mongodb.net/sf-app?retryWrites=true&w=majority';
 
-//Connect with our db
-mongoose.connect(dbURI, { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true,
-}, (err, connection) => {
-if(err) {
-console.error(err)
-return
-}    
-console.log('Connected to DB');
-    app.listen({ port: PORT }, () => {
-        console.log(`Server running at http://localhost:${PORT}`);
-    })})
+mongoose.connect(
+    dbURI,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    },
+    () => {
+        console.log("Mongoose connected");
+    }
+)
 
-mongoose.set('useNewUrlParser', true);
-mongoose.set("useFindAndModify", false);
-mongoose.set('useCreateIndex', true);
-// mongoose.set('useUnifiedTopology', true);
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(cors({
+    origin: "http://localhost:3000/",
+    credentials: true
+}))
 
-const path = require('path');
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
 
+// app.use(cors({
+//     origin: `http://localhost:${PORT}`,
+//     credentials: true
+// }))
+
+app.use(session({
+    secret: 'foo',
+    resave: true,
+    saveUninitialized: true
+}))
+app.use(cookieParser("foo"));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(
-  session({
-    resave: false,
-    saveUninitialized: false, 
-    secret: 'foo',
-    store: MongoStore.create({ 
-      mongoUrl:dbURI,
-    }),
-  })
-);
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 
-// app.use(cors());
+app.post('/login', (req, res) => {
+    console.log(req.body);
+})
 
-const Authentication = require("./routes/Auth");
-const User = require("./routes/User");
+app.post('/register', (req, res) => {
+    User.findOne({username: req.body.username}, async (err, doc) => {
+        if (err) {
+            throw err;
+        } 
+        if (doc) {
+            res.send("User Already Exists");
+        }
+        if (!doc) {
+            const newUser = new User({
+                username: req.body.username,
+                password: req.body.password
+            });
+            await newUser.save();
+            res.send("User Created");
+        }
+    })
+})
 
-//Using routers
-app.use("/auth", Authentication);
-app.use("/user", User);
+app.post('/user', (req, res) => {
+    console.log(req.body);
+})
 
-// app.use(express.static(__dirname));
-// app.get("/api", (req, res) => {
-//     // res.json({message: "Hello from server"});
-//     res.sendFile(path.join(__dirname+'/api.html'));
-// });
+// app.use(
+//     session({
+//       resave: false,
+//       saveUninitialized: false, 
+//       secret: 'foo',
+//       store: MongoStore.create({ 
+//         mongoUrl:dbURI,
+//       }),
+//     })
+//   );
 
-// app.listen(PORT, () => {
-//     console.log(`Server listening on port ${PORT}`);
-// })
+  app.listen({ port: PORT }, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+})
+
+
+//Connect with our db
+// mongoose.connect(dbURI, { 
+//     useNewUrlParser: true, 
+//     useUnifiedTopology: true,
+// }, (err, connection) => {
+// if(err) {
+// console.error(err)
+// return
+// }    
+// console.log('Connected to DB');
+//     app.listen({ port: PORT }, () => {
+//         console.log(`Server running at http://localhost:${PORT}`);
+//     })})
+
+// mongoose.set('useCreateIndex', true);
+// mongoose.set('useUnifiedTopology', true);
+
+// const path = require('path');
