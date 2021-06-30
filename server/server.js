@@ -73,10 +73,26 @@ app.use(session({
 app.use(cookieParser("foo"));
 app.use(passport.initialize());
 app.use(passport.session());
+require('./Auth/passportConfig')(passport);
 
 
-app.post('/login', (req, res) => {
-    console.log(req.body);
+app.post('/login', (req, res, next) => {
+    passport.authenticate("local", (err, user, info) => {
+        if (err) {
+            throw err;
+        }
+        if (!user) {
+            res.send("User doesn't exist");
+        } else {
+            req.logIn(user, (err) => {
+                if (err) {
+                    console.log(err);
+                }
+                res.send("Authenticated");
+                console.log(`Logged in ${req.user}`);
+            })
+        }
+    })(req, res, next);
 })
 
 app.post('/register', (req, res) => {

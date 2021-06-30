@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link, BrowserRouter, Switch, Redirect }
 import CoverComponent from './components/CoverComponent';
 import NavComponent from './components/NavComponent';
 import RegisterComponent from './components/RegisterComponent';
+import LoginComponent from './components/LoginComponent';
 
 function App() {
   let isAuth = true;
@@ -15,7 +16,7 @@ function App() {
       <Router>
         <Route exact path="/" component={CoverComponent}></Route>
         <Route path="/random_select" component={GameIconContainer}></Route>
-        <Route path="/login"></Route>
+        <Route path="/login" component={LoginComponent}></Route>
         <Route path="/register" component={RegisterComponent}></Route>  
       </Router>
       {/* {isAuth ? 
