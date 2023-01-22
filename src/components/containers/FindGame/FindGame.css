@@ -1,0 +1,34 @@
+.sf2-find-game__allresults {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.sf2-find-game__result {
+    margin-top: 5%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.sf2-find-game__result h2 {
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.5em;
+}
+
+.sf2-find-game__result img {
+    width: 600px;
+    height: 400px;
+}
+
+.sf2-find-game__result button {
+    width: 40%;
+    align-self: center;
+    margin-top: 5%;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-const GameIconComponent = props => {
+export default function GameIconComponent (props) {
     let gameImgPath = props.icon;
     let gameAfterSlash = gameImgPath.lastIndexOf("/");
     let gameBeforePeriod = gameImgPath.indexOf(".");
@@ -19,5 +19,3 @@ const GameIconComponent = props => {
         </div>
     )
 }
-
-export default GameIconComponent;

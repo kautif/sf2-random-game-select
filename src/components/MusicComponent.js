@@ -19,17 +19,13 @@ function stopMusic () {
     document.getElementById("audio-play").currentTime = 0;
 }
 
-class MusicComponent extends Component {
-    render () {
-        return (
-            <div className="music-container">
-                <audio id="audio-play" src={soundFile} loop="loop" autoPlay onPlay={() => document.getElementById("audio-play").volume = 0.25}></audio>
-                <i className="fas fa-play" onClick={() => handleMusic()}></i>
-                <i className="fas fa-pause" onClick={() => pauseMusic()}></i>
-                <i className="fas fa-stop" onClick={() => stopMusic()}></i>
-            </div>
-        )
-    }
+export default function MusicComponent () {
+    return (
+        <div className="music-container">
+            <audio id="audio-play" src={soundFile} loop="loop" autoPlay onPlay={() => document.getElementById("audio-play").volume = 0.25}></audio>
+            <i className="fas fa-play" onClick={() => handleMusic()}></i>
+            <i className="fas fa-pause" onClick={() => pauseMusic()}></i>
+            <i className="fas fa-stop" onClick={() => stopMusic()}></i>
+        </div>
+    )
 }
-
-export default MusicComponent;

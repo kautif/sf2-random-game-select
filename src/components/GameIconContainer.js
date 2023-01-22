@@ -82,7 +82,6 @@ import witcher_3 from '../img/witcher_3.jpg';
 
 import select from '../sounds/select_fighter.mp3';
 import selected from '../sounds/street_fighter_choose.mp3';
-import sf_coin from '../sounds/sf_coin.mp3';
 import OnStageComponent from './OnStageComponent';
 import MusicComponent from './MusicComponent';
 
@@ -725,7 +724,6 @@ function selectWinner () {
 
 window.onkeydown = (e) => {
     e = e || window.event;
-    console.log(e.keyCode);
     selectIcon();
     if (e.keyCode === 38 || 
         e.keyCode === 40 ||
@@ -741,24 +739,17 @@ window.onkeydown = (e) => {
     }
 }
 
-class GameIconContainer extends Component { 
-    constructor (props) {
-        super (props)
-        this.state = {
-            votes: {
-                asuras_wrath: 1,
-                dragon_age: 2
-            }
-        }
-    } 
-
-    componentDidMount() {
-        document.getElementById('cover-coin').play();
-        let gamesContainer = document.getElementsByClassName('games-container')[0];
-        gamesContainer.style.width = window.outerWidth + 'px';
-    }
-
-    render () {
+export default function GameIconContainer () { 
+    // constructor (props) {
+    //     super (props)
+    //     this.state = {
+    //         votes: {
+    //             asuras_wrath: 1,
+    //             dragon_age: 2
+    //         }
+    //     }
+    // }    
+    
         return (
             <div className="games-container">
                 <MusicComponent />
@@ -767,14 +758,10 @@ class GameIconContainer extends Component {
                         {games}
                         <audio id="select" src={select}></audio>
                         <audio id="selected" src={selected}></audio>
-                        <audio id="cover-coin" src={sf_coin}></audio>
                     </div>
                     <OnStageComponent />
                 </div>
                 <p id="random-select-btn" onClick={() => randomSelect()}>Random Select</p>   
             </div>
         )
-    }    
 }
-
-export default GameIconContainer;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OnStageComponent = props => {
+export default function OnStageComponent (props) {
     console.log(props);
     return (
         <div className="on-stage">
@@ -11,5 +11,3 @@ const OnStageComponent = props => {
         </div>
     )
 }
-
-export default OnStageComponent;

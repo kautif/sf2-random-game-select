@@ -1,0 +1,65 @@
+import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import axios from 'axios';
+import "./SignUp.css";
+
+export default function SignUp () {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [register, setRegister] = useState(false);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const config = {
+            method: "post",
+            url: "http://localhost:4000/register",
+            data: {
+                email,
+                password
+            }
+        }
+        axios(config)
+            .then(result => {
+                console.log("axios result: ", result)
+            })
+            .catch(error => {
+                console.log("axios error: ", error);
+            })
+
+        alert("Submitted");
+    }
+        
+    return (
+        <div className="sf2__register__container">
+            <Form onSubmit={e => handleSubmit(e)}>
+                <Form.Group controlId="formBasicEmail" size="lg" className="mt-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control 
+                        type="email" 
+                        name="email" 
+                        value={email} 
+                        onChange={e => setEmail(e.target.value)}>
+                    </Form.Control>
+                </Form.Group>
+                
+                <Form.Group size="lg" className="mt-3">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password" 
+                        name="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)} >
+                    </Form.Control>
+                </Form.Group>
+                <Button 
+                    block 
+                    size="lg" 
+                    type="submit" 
+                    className="btn btn-primary mt-4">
+                        Register
+                </Button>
+            </Form>
+        </div>
+    )
+}

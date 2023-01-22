@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import sf_logo from '../img/sf_logo.png';
 import sf_intro from '../img/SF2-Intro-no-loop.gif';
 import sf_theme from '../sounds/sf2_theme.mp3';
+import sf_coin from '../sounds/sf_coin.mp3';
+
 import { BrowserRouter as Router, Route, Link, BrowserRouter, Switch, useHistory } from "react-router-dom";
 import GameIconContainer from './GameIconContainer';
+import Nav from './Nav';
 
 function fade(element) {
     var op = 1;  // initial opacity
@@ -67,9 +70,13 @@ function startIntro () {
     }, 7000)
 }
 
-class CoverComponent extends Component {
-  
-    render () {
+function playCoin () {
+    document.getElementById('cover-coin').play();
+    // let gamesContainer = document.getElementsByClassName('games-container')[0];
+    // gamesContainer.style.width = window.outerWidth + 'px';
+}
+
+export default function CoverComponent () {
         return (
             <div className="cover" onLoad={() => flashStart()}>
                 <img className="sf-intro" src={sf_intro} alt="street fighter intro gif" loop="false" />
@@ -83,13 +90,12 @@ class CoverComponent extends Component {
                         <h1 className="cover-logo">Random Game</h1>
                         <h1 className="cover-logo cover-select">Select</h1>
                     </div>
-                    <div className="cover-continue">
-                        <Link to="/random_select"><h1>Continue</h1></Link>
+                    <div className="cover-continue" onClick={playCoin}>
+                        {/* <Link to="/random_select"></Link> */}
+                        <audio id="cover-coin" src={sf_coin}></audio>
+                        <Nav />
                     </div>
                 </div>
             </div>
         )
-    }
 }
-
-export default CoverComponent;
