@@ -7,6 +7,7 @@ export default function SignUp () {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [register, setRegister] = useState(false);
+    const [registerMsg, setRegisterMsg] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,7 +22,9 @@ export default function SignUp () {
         }
         axios(config)
             .then(result => {
-                console.log("axios result: ", result)
+                console.log("axios result: ", result);
+                console.log("server message: ", result.data.message);
+                setRegisterMsg(result.data.message);
             })
             .catch(error => {
                 console.log("axios error: ", error);
@@ -60,6 +63,7 @@ export default function SignUp () {
                         Register
                 </Button>
             </Form>
+            <p>{registerMsg}</p>
         </div>
     )
 }

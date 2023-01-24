@@ -50,6 +50,7 @@ const normalizePort = val => {
 const port = normalizePort(process.env.PORT || "4000");
 
 app.post("/register", async (req, res) => {
+    let registered = false;
     if (req.body.password.length < 8) {
         res.status(400).send({
             message: "password must be at least 8 characters long"
@@ -57,7 +58,22 @@ app.post("/register", async (req, res) => {
         return;
     }
 
-        bcrypt.hash(req.body.password, 10)
+// 1/22/23: Checking whether user exists before registering user
+    // Otherwise, send a message back to the user indicating that the user couldn't be created because it already exists
+    User.findOne({
+        email: req.body.email
+    }).then(registerEmail => {
+        if (req.body.email === registerEmail.email) {
+            registered = true;
+        }
+
+        res.send({
+            message: "This email address is already registered"
+        })
+    }).catch(err => {
+        console.log("Error: User doesn't exist");
+        if (!registered) {
+            bcrypt.hash(req.body.password, 10)
             .then((hashedPw) => {
                 let user = new User({
                     publicId: randomUUID(),
@@ -67,7 +83,7 @@ app.post("/register", async (req, res) => {
                 user.save()
                     .then(result => {
                         res.status(201).send({
-                            message: "User created",
+                            message: "Account Created -> Login",
                             result
                         })
                     })
@@ -77,8 +93,7 @@ app.post("/register", async (req, res) => {
                             error
                         })
                     })
-            })
-            .catch(error => {
+            }).catch(error => {
                 if (req.body.password.length < 8) {
                     res.status(500).send({
                         message: "Password hash failed",
@@ -86,6 +101,8 @@ app.post("/register", async (req, res) => {
                     })
                 }
             })
+        }
+    })
 })
 
 app.post("/login", (req, res) => {
