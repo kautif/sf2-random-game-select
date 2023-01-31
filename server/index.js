@@ -106,6 +106,7 @@ app.post("/register", async (req, res) => {
 })
 
 app.post("/login", (req, res) => {
+    console.log("login pw: ", req.body.password);
     User.findOne({
         email: req.body.email
     })
@@ -204,6 +205,47 @@ app.post("/addgame", ((req, res, next) => {
     })
 }))
 
+app.get("/getgames", (req, res) => {
+    console.log("getgames list: ", req.query.email);
+    User.findOne({
+        email: req.query.email
+    }).then(response => {
+        console.log("getting games: ", response.games);
+        res.json({
+            response
+        })
+    })
+})
+
+app.put("/updatevotes", (req, res) => {
+    User.updateOne(
+        {
+        email: req.body.email, "games.name": req.body.games.name},
+        {
+            $set: {
+                "games.$.votes": req.body.games.votes
+            }
+        }, function (err, result) {
+            if (err) {
+                return res.status(500).send("update votes error: ", err.response);
+            }
+        console.log("Document updated");
+    })
+})
+
+
+// collection.updateOne(
+//             { 
+//         name: "Jane Smith"
+//      }, 
+//      { 
+//          $set: 
+//             { 
+//              name: "John Doe" 
+//             } 
+//     }, function(err, res) {
+//     console.log("Document updated");
+//   });
 // https://chat.openai.com/chat/a0fc7764-4120-4eee-87b7-00dd64ac3a76
     // 1/8/23: Supposedly, this can be used to provide a unique profile page for each user. Try it.
       

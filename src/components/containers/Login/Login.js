@@ -11,18 +11,15 @@ import Cookies from "universal-cookie";
 
 export default function Login () {
     const { userInfo } = useContext(UserContext);
+    const { login, setLogin, userEmail, setUserEmail } = userInfo;
 
-    console.log("hi: ", userInfo);
-    const { email, setEmail, password, setPassword, login, setLogin, userEmail, setUserEmail } = userInfo;
-
-    // const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     // const [login, setLogin] = useState(false);
 
     function handleSubmit(e) {
         e.preventDefault();
         const cookies = new Cookies();
-
         const config = {
             method: "post",
             url: "http://localhost:4000/login",
@@ -46,6 +43,7 @@ export default function Login () {
     }
 
     useEffect(() => {
+        console.log("useEffect: ", email);
         window.localStorage.setItem('email', JSON.stringify(email));
     }, [email])
 
@@ -58,7 +56,7 @@ export default function Login () {
                         autofocus
                         type="email"
                         value={email}
-                        onChange={e => {setEmail(e.target.value); console.log("login email: ", email);}}
+                        onChange={e => {setEmail(e.target.value)}}
                         />
                 </Form.Group>
 

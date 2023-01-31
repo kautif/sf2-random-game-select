@@ -6,8 +6,6 @@ import axios from "axios";
 import "./FindGame.css";
 import { Button } from "react-bootstrap";
 
-let accessToken;
-
 export default function FindGame () {
     const { userInfo } = useContext(UserContext);
     const { email, setEmail, password, setPassword, login, setLogin, userEmail, setUserEmail } = userInfo;

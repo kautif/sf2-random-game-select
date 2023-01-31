@@ -10,7 +10,6 @@ export default function Auth () {
     const { userInfo } = useContext(UserContext);
     const { email, setEmail, password, setPassword, login, setLogin, userEmail, setUserEmail } = userInfo;   
     const cookies = new Cookies();
-    console.log("cookies: ", cookies);
     const token = cookies.get("token");
     const [message, setMessage] = useState("");
     let currentUser;

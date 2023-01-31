@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import "./SignUp.css";
+import UserContext from '../../../UserContext';
 
 export default function SignUp () {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [register, setRegister] = useState(false);
     const [registerMsg, setRegisterMsg] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { userInfo } = useContext(UserContext);
+    const { login, setLogin, userEmail, setUserEmail } = userInfo;
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
