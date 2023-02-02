@@ -1,0 +1,30 @@
+.sf2-gameslist__allgames {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.gameslist__game {
+    text-align: center;
+}
+
+.gameslist__game img {
+    width: 600px;
+    height: 400px;
+}
+
+.gameslist__game__votes-label {
+    display: block;
+}
+
+.gameslist__game__buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.gameslist__game__buttons button {
+    width: 30%;
+    font-size: 1.5em;
+}

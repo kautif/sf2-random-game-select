@@ -233,6 +233,22 @@ app.put("/updatevotes", (req, res) => {
     })
 })
 
+app.delete("/deletegame", (req, res) => {
+    User.updateOne({
+        email: req.body.email
+    },
+    {
+        $pull: {
+            games: {
+                name: req.body.games.name
+            }
+        }
+    }, (err, result) => {
+        if (err) throw err;
+        console.log(result.modifiedCount + " game(s) deleted");
+    })
+})
+
 
 // collection.updateOne(
 //             { 

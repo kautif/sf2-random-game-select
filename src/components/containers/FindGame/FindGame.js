@@ -46,7 +46,9 @@ export default function FindGame () {
         let gameObj = {
             name: gameName,
             img_url: gameImg,
-            votes: 1
+            votes: 1,
+            positions: [],
+            running_total: 0
         }
         gamesArr.push(gameObj)
         let config = {

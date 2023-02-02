@@ -1,84 +1,6 @@
 import '../App.css';
 import React, {Component} from 'react';
 import GameIconComponent from './GameIconComponent';
-import dragon_age from '../img/dragon_age.png';
-import thirtyxx from '../img/30XX.jpg';
-import aragami from '../img/aragami.jpg';
-import ash_of_gods from '../img/ash_of_gods.jpg';
-import ato from '../img/ato.png';
-import baba from '../img/baba.jpg';
-import banner_saga from '../img/banner_saga.jpg';
-import batman_arkham_knight from '../img/batman_arkham_knight.jpg';
-import beyond_two_souls from '../img/beyond_two_souls.jpg';
-import blacksad from '../img/blacksad.jpg';
-import blazing_chrome from '../img/blazing_chrome.png';
-import bloodborne from '../img/bloodborne.jpg';
-import bloodstained_ritual from '../img/bloodstained_ritual.jpg';
-import bushiden from '../img/bushiden.png';
-import carrion from '../img/carrion.jpg';
-import catherine from '../img/catherine.png';
-import cuphead from '../img/cuphead.jpg';
-import cyberfunk from '../img/cyberfunk.jpg';
-import cybershadow from '../img/cybershadow.jpg';
-import daemon from '../img/daemon.jpg';
-import darksiders from '../img/darksiders.jpg'
-import dead_cells from '../img/dead_cells.jpg';
-import dead_space from '../img/dead_space.jpg';
-import deus_ex from '../img/deus_ex.jpg';
-import dishonored from '../img/dishonored.jpg';
-import dishonored_2 from '../img/dishonored_2.jpg';
-import doom_eternal from '../img/doom_eternal.png';
-import exanima from '../img/exanima.jpg';
-import fell_seal from '../img/fell_seal.jpg';
-import friends_ringo from '../img/friends_ringo.jpg';
-import ghosts_n_goblins from '../img/ghosts_n_goblins.png';
-import god_of_war from '../img/god_of_war.jpg';
-import gravity_circuit from '../img/gravity_circuit.jpg';
-import gris from '../img/gris.jpg';
-import harry_potter_chamber_of_secrets from '../img/harry_potter_chamber_of_secrets.jpg';
-import hellpoint from '../img/hellpoint.png';
-import hitchhiker from '../img/hitchhiker.jpg';
-import huntdown from '../img/huntdown.jpg';
-import journey from '../img/journey.png';
-import katana_zero from '../img/katana_zero.jpg';
-import lit from '../img/lit.jpg';
-import majoras_mask from '../img/majoras_mask.jpg';
-import mass_builder from '../img/mass_builder.jpg';
-import mass_effect from '../img/mass_effect.jpg';
-import mega_man_maker from '../img/mega_man_maker.png';
-import megaman_legends_2 from '../img/megaman_legends_2.jpg';
-import megaman_streetfighter from '../img/megaman_streetfighter.jpg';
-import metal_gear_solid_5 from '../img/metal_gear_solid_5.png';
-import mighty_fight from '../img/mighty_fight.jpg';
-import mind_seize from '../img/mind_seize.jpg';
-import mortal_shell from '../img/mortal_shell.jpg';
-import observer from '../img/observer.jpg';
-import one_shot from '../img/one_shot.jpg';
-import panzer_paladin from '../img/panzer_paladin.jpg';
-import parappa from '../img/parappa.jpg';
-import pedro from '../img/pedro.jpg';
-import poly_bridge from '../img/poly_bridge.jpg';
-import revengeance from '../img/revengeance.jpg';
-import ring_fit_adventure from '../img/ring_fit_adventure.jpg';
-import salt from '../img/salt.jpg';
-import samurai_jack from '../img/samurai_jack.jpg';
-import savior from '../img/savior.png';
-import sonic_adventure from '../img/sonic_adventure.png';
-import steamworld_dig_2 from '../img/steamworld_dig_2.jpg';
-import super_mario_64 from '../img/super_mario_64.jpg';
-import super_seducer from '../img/super_seducer.jpg';
-import surge from '../img/surge.jpeg';
-import surge_2 from '../img/surge_2.png';
-import the_pedestrian from '../img/the_pedestrian.jpg';
-import thumper from '../img/thumper.jpg';
-import tomb_raider from '../img/tomb_raider.jpg';
-import um_jammer from '../img/um_jammer.png';
-import valfaris from '../img/valfaris.jpg';
-import vampyr from '../img/vampyr.jpg';
-import watch_dog from '../img/watch_dogs.jpg';
-import wildfire from '../img/wildfire.jpg';
-import windjammers from '../img/windjammers.jpg';
-import witcher_3 from '../img/witcher_3.jpg';
 
 import select from '../sounds/select_fighter.mp3';
 import selected from '../sounds/street_fighter_choose.mp3';
@@ -98,13 +20,6 @@ import MusicComponent from './MusicComponent';
 //              - If Math.random lands on any of the numbers in Undertale's array, it wins. 
 //              - If Math.random lands on any number not in Undertale's array, it doesn't win 
 //              (some other game wins)
-
-let gameIcons = [darksiders, dragon_age, thirtyxx, aragami, ash_of_gods, ato, baba, banner_saga, batman_arkham_knight, beyond_two_souls, blacksad,
-    blazing_chrome, bloodborne, bloodstained_ritual, bushiden, carrion, catherine, cuphead, cyberfunk, cybershadow, daemon, dead_cells,
-    dead_space, deus_ex, dishonored, dishonored_2, doom_eternal, exanima, friends_ringo, ghosts_n_goblins, god_of_war, gravity_circuit, gris, harry_potter_chamber_of_secrets, hellpoint, huntdown, hitchhiker,
-    journey, katana_zero, lit, majoras_mask, mass_builder, mass_effect, mega_man_maker, megaman_legends_2, megaman_streetfighter, metal_gear_solid_5, mighty_fight, mind_seize,
-    mortal_shell, observer, one_shot, panzer_paladin, parappa, pedro, poly_bridge, revengeance, ring_fit_adventure, salt, samurai_jack, savior, sonic_adventure, steamworld_dig_2, super_mario_64, super_seducer, surge,
-    surge_2, the_pedestrian, thumper, tomb_raider, um_jammer, valfaris, vampyr, watch_dog, wildfire, windjammers, witcher_3];
 
 const games = [];
 
@@ -695,7 +610,6 @@ function randomSelect () {
 function selectWinner () {
     let winner = Math.floor(Math.random() * (totalVotes - 1) + 1);
     let keys = Object.keys( gameVotes );
-    console.log("random select keys: ", keys);
     
     for (let z = 0; z < keys.length; z++) {
         if (z === 0) {
