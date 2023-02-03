@@ -105,6 +105,7 @@ export default function Gameslist () {
                 }
             }
 
+            console.log("testing git access");
             setVoteTotals(userGames);
     
            await axios(config)
