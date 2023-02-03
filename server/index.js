@@ -233,6 +233,23 @@ app.put("/updatevotes", (req, res) => {
     })
 })
 
+app.put("/updatepositions", (req,res) => {
+    console.log("updatepositions reached");
+    User.updateMany(
+        {
+            email: req.body.email
+        }, {
+            $set: {
+                "games": req.body.games
+            }
+        }, function (err, result) {
+            if (err) {
+                return res.status(500).send("update positions error: ", err.response)
+            }
+        }
+    )
+})
+
 app.delete("/deletegame", (req, res) => {
     User.updateOne({
         email: req.body.email

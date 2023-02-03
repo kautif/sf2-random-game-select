@@ -41,10 +41,11 @@ export default function Gameslist () {
             // How ever many votes there are for the current game, that's how many positions there will be in the current game's array. 
                 // Each position will need to be added individually
 
-    function setVoteTotals(gamesObjs) {
+    async function setVoteTotals(gamesObjs) {
         let nextTotal = 0;
 
         for (let z = 0; z < gamesObjs.length; z++) {
+            gamesObjs[z].positions.length = 0;
             if (z === 0) {
                 nextTotal += parseInt(gamesObjs[z].votes);
                 gamesObjs[z].running_total = nextTotal;
@@ -61,6 +62,23 @@ export default function Gameslist () {
                 }
             }
         }
+
+        const positionsConfig = {
+            method: "put",
+            url: "http://localhost:4000/updatepositions",
+            data: {
+                email: localDataEmail,
+                games: gamesObjs
+            }
+        }
+
+        console.log("positionsConfig: ", positionsConfig)
+
+        await axios(positionsConfig).then(result => {
+            console.log("positions updated: ", result);
+        }).catch(err => {
+            console.log("positions update error: ", err);
+        })
     }
 
     async function updateVotes (e, gameName, gameVotes) {
@@ -72,8 +90,6 @@ export default function Gameslist () {
         } else {
             assignedVotes = e.target.parentElement.previousSibling.value;
         }
-
-        setVoteTotals(userGames);
 
         if (assignedVotes !== "") {
             const config = {
@@ -88,11 +104,12 @@ export default function Gameslist () {
                     }
                 }
             }
+
+            setVoteTotals(userGames);
     
            await axios(config)
                 .then(result => {
                     console.log("update vote: ", result);
-                    // setVoteTotals(userGames);
                 }).catch(err => {
                     console.log("update vote Error: ", err);
                 })
