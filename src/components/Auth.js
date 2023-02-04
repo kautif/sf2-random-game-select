@@ -12,7 +12,6 @@ export default function Auth () {
     const cookies = new Cookies();
     const token = cookies.get("token");
     const [message, setMessage] = useState("");
-    let currentUser;
 
     console.log("token: ", token);
 // 1/9/23: Perhaps do an axios request to get the user object and display their info on their account page
@@ -30,8 +29,7 @@ export default function Auth () {
             .then(result => {
                 setMessage(result.data.message);
                 console.log("auth result: ", result);
-                currentUser = result.data.user;
-                setUserEmail(currentUser.email);
+                setUserEmail(result.data.user.email);
             })
             .catch(error => {
                 console.log("auth: ", error);
@@ -47,12 +45,12 @@ export default function Auth () {
         window.location.href = "/continue";
     }
 
-    let username = userEmail.substring(0, userEmail.indexOf("@"));
+    // let username = userEmail.substring(0, userEmail.indexOf("@"));
 
     return (
         <div>
             <AuthNav />
-            <h1>Welcome {username}</h1>
+            <h1>Welcome {userEmail && userEmail.substring(0, userEmail.indexOf("@"))}</h1>
             <h3 className="text-center text-danger">{message}</h3>
             <Button type="submit" variant="danger" onClick={() => logout()}>Logout</Button>
         </div>

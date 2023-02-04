@@ -693,6 +693,19 @@ function randomSelect () {
 }
 
 function selectWinner () {
+    // 2/3/23: Alternative method for selecting a random game
+        // Each game has an id which is equivalent to its index in a user's game array
+        // Add each game's id to an array of the votedIds
+        // Random select from that array based off of its length minus 1
+        // Based on the randomly selected ID from the votedIds array, select the game from the user's game array
+    const votedIds = [];
+    for(let i = 0; i < games.length; i++){
+        for(let v = 0; v < games[i].votes; v++){
+            votedIds.push(i);
+        }
+    }
+
+
     let winner = Math.floor(Math.random() * (totalVotes - 1) + 1);
     let keys = Object.keys( gameVotes );
     console.log("random select keys: ", keys);
