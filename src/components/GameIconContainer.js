@@ -552,67 +552,67 @@ function updateStage (gameIndex) {
     document.getElementById('vote-total').innerHTML = totalVotes;
 }
 
-function selectIcon (e) {
-    e = e || window.event;
+// function selectIcon (e) {
+//     e = e || window.event;
 
-    function removeBorder (index) {
-        document.getElementsByClassName('gameIcon-single-container')[index].style.border = 'none';
-    }
+//     function removeBorder (index) {
+//         document.getElementsByClassName('gameIcon-single-container')[index].style.border = 'none';
+//     }
 
-    function addBorder (index) {
-        document.getElementsByClassName('gameIcon-single-container')[index].style.border = 'white 2px solid';
-        currentGameSrc = document.getElementsByClassName('gameIcon-single-container')[index].firstElementChild.src;
-        currentGame = document.getElementsByClassName('gameIcon-single-container')[index];
-    }
+//     function addBorder (index) {
+//         document.getElementsByClassName('gameIcon-single-container')[index].style.border = 'white 2px solid';
+//         currentGameSrc = document.getElementsByClassName('gameIcon-single-container')[index].firstElementChild.src;
+//         currentGame = document.getElementsByClassName('gameIcon-single-container')[index];
+//     }
 
-    if (e.keyCode === 38) {
-        // up arrow
-        currentGameIndex -= 10;
-        for (let i = 0; i < document.getElementsByClassName('gameIcon-single-container').length; i++) {
-            removeBorder(i);
-        }
-        if (currentGameIndex < 0) {
-            currentGameIndex = 0;
-        }
-        addBorder(currentGameIndex);
-    }
-    else if (e.keyCode === 40) {
-        // down arrow
-        currentGameIndex += 10;
-        for (let i = 0; i < document.getElementsByClassName('gameIcon-single-container').length; i++) {
-            removeBorder(i);
-        }
-        if (currentGameIndex >= games.length) {
-            currentGameIndex = games.length - 1;
-        }
-        addBorder(currentGameIndex);
-    }
-    else if (e.keyCode === 37) {
-        // left arrow
-        currentGameIndex -= 1;
-        for (let i = 0; i < document.getElementsByClassName('gameIcon-single-container').length; i++) {
-            removeBorder(i);
-        }
-        if (currentGameIndex < 0) {
-            currentGameIndex = 0;
-        }
-        addBorder(currentGameIndex);
-    }
-    else if (e.keyCode === 39) {
-        // right arrow
-        currentGameIndex += 1;
-        for (let i = 0; i < document.getElementsByClassName('gameIcon-single-container').length; i++) {
-            removeBorder(i);
-        }
-        if (currentGameIndex >= games.length) {
-            currentGameIndex = games.length - 1;
-        }
-        addBorder(currentGameIndex);
-    } else {
-        return null;
-    }
-    updateStage(currentGameIndex);
-}
+//     if (e.keyCode === 38) {
+//         // up arrow
+//         currentGameIndex -= 10;
+//         for (let i = 0; i < document.getElementsByClassName('gameIcon-single-container').length; i++) {
+//             removeBorder(i);
+//         }
+//         if (currentGameIndex < 0) {
+//             currentGameIndex = 0;
+//         }
+//         addBorder(currentGameIndex);
+//     }
+//     else if (e.keyCode === 40) {
+//         // down arrow
+//         currentGameIndex += 10;
+//         for (let i = 0; i < document.getElementsByClassName('gameIcon-single-container').length; i++) {
+//             removeBorder(i);
+//         }
+//         if (currentGameIndex >= games.length) {
+//             currentGameIndex = games.length - 1;
+//         }
+//         addBorder(currentGameIndex);
+//     }
+//     else if (e.keyCode === 37) {
+//         // left arrow
+//         currentGameIndex -= 1;
+//         for (let i = 0; i < document.getElementsByClassName('gameIcon-single-container').length; i++) {
+//             removeBorder(i);
+//         }
+//         if (currentGameIndex < 0) {
+//             currentGameIndex = 0;
+//         }
+//         addBorder(currentGameIndex);
+//     }
+//     else if (e.keyCode === 39) {
+//         // right arrow
+//         currentGameIndex += 1;
+//         for (let i = 0; i < document.getElementsByClassName('gameIcon-single-container').length; i++) {
+//             removeBorder(i);
+//         }
+//         if (currentGameIndex >= games.length) {
+//             currentGameIndex = games.length - 1;
+//         }
+//         addBorder(currentGameIndex);
+//     } else {
+//         return null;
+//     }
+//     updateStage(currentGameIndex);
+// }
 
 function showSelection (gameIndex) {
     for (let i = 0; i < document.getElementsByClassName('gameIcon-single-container').length; i++) {
@@ -698,12 +698,12 @@ function selectWinner () {
         // Add each game's id to an array of the votedIds
         // Random select from that array based off of its length minus 1
         // Based on the randomly selected ID from the votedIds array, select the game from the user's game array
-    const votedIds = [];
-    for(let i = 0; i < games.length; i++){
-        for(let v = 0; v < games[i].votes; v++){
-            votedIds.push(i);
-        }
-    }
+    // const votedIds = [];
+    // for(let i = 0; i < games.length; i++){
+    //     for(let v = 0; v < games[i].votes; v++){
+    //         votedIds.push(i);
+    //     }
+    // }
 
 
     let winner = Math.floor(Math.random() * (totalVotes - 1) + 1);
@@ -736,22 +736,22 @@ function selectWinner () {
     }
 }
 
-window.onkeydown = (e) => {
-    e = e || window.event;
-    selectIcon();
-    if (e.keyCode === 38 || 
-        e.keyCode === 40 ||
-        e.keyCode === 37 ||
-        e.keyCode === 39) {
-            document.getElementById('select').pause();
-            if (document.getElementById('select').paused) {
-                document.getElementById('select').currentTime = 0;
-                document.getElementById('select').play();
-            } else {
-                document.getElementById('select').play();
-            }
-    }
-}
+// window.onkeydown = (e) => {
+//     e = e || window.event;
+//     // selectIcon();
+//     if (e.keyCode === 38 || 
+//         e.keyCode === 40 ||
+//         e.keyCode === 37 ||
+//         e.keyCode === 39) {
+//             document.getElementById('select').pause();
+//             if (document.getElementById('select').paused) {
+//                 document.getElementById('select').currentTime = 0;
+//                 document.getElementById('select').play();
+//             } else {
+//                 document.getElementById('select').play();
+//             }
+//     }
+// }
 
 export default function GameIconContainer () { 
     // constructor (props) {

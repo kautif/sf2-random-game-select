@@ -9,11 +9,13 @@ export function UserContextProvider ({children}) {
     // const [loginPw, setLoginPw] = useState("");
     const [register, setRegister] = useState(false);
     const [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail'));
+    const [userGames, setUserGames] = useState([]);
 
     return (
         <UserContext.Provider value={{userInfo: { userEmail, setUserEmail, 
                                                  email, setEmail, 
-                                                login, setLogin }}}>
+                                                login, setLogin,
+                                                userGames, setUserGames }}}>
             {children}
         </UserContext.Provider>
     )

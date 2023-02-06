@@ -19,8 +19,6 @@ const UserSchema = new mongoose.Schema({
         name: String,
         img_url: String,
         votes: Number,
-        positions: Array,
-        running_total: Number,
         unique: [true, "This Game is Already on Your Profile"]
     }
 })

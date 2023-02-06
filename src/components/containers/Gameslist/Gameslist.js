@@ -11,8 +11,11 @@ let gamesListArr = [];
 
 export default function Gameslist () {
     const { userInfo } = useContext(UserContext);
-    const { email, setEmail, password, setPassword, login, setLogin, userEmail, setUserEmail } = userInfo;
-    const [userGames, setUserGames] = useState([]);
+    const { email, setEmail, 
+            password, setPassword, 
+            login, setLogin, 
+            userEmail, setUserEmail, 
+            userGames, setUserGames } = userInfo;
 
     const localData = window.localStorage.getItem('email');
     const localDataEmail = JSON.parse(localData);
@@ -42,43 +45,24 @@ export default function Gameslist () {
                 // Each position will need to be added individually
 
     async function setVoteTotals(gamesObjs) {
-        let nextTotal = 0;
-
-        for (let z = 0; z < gamesObjs.length; z++) {
-            gamesObjs[z].positions.length = 0;
-            if (z === 0) {
-                nextTotal += parseInt(gamesObjs[z].votes);
-                gamesObjs[z].running_total = nextTotal;
-                for (let k = 0; k < parseInt(gamesObjs[z].votes); k++) {
-                    gamesObjs[z].positions.push(parseInt(gamesObjs[z].votes) - k);
-                }
-                gamesObjs[z].positions.sort();
-            } 
-            else {
-                nextTotal += parseInt(gamesObjs[z].votes);
-                gamesObjs[z].running_total = nextTotal;
-                for (let k = nextTotal - gamesObjs[z].votes; k < gamesObjs[z].running_total; k++) {
-                    gamesObjs[z].positions.push(k + 1);
-                }
-            }
-        }
-
-        const positionsConfig = {
-            method: "put",
-            url: "http://localhost:4000/updatepositions",
-            data: {
-                email: localDataEmail,
-                games: gamesObjs
-            }
-        }
-
-        console.log("positionsConfig: ", positionsConfig)
-
-        await axios(positionsConfig).then(result => {
-            console.log("positions updated: ", result);
-        }).catch(err => {
-            console.log("positions update error: ", err);
-        })
+        // for (let z = 0; z < gamesObjs.length; z++) {
+        //     gamesObjs[z].positions.length = 0;
+        //     if (z === 0) {
+        //         nextTotal = parseInt(gamesObjs[z].votes);
+        //         gamesObjs[z].running_total = nextTotal;
+        //         for (let k = 0; k < parseInt(gamesObjs[z].votes); k++) {
+        //             gamesObjs[z].positions.push(parseInt(gamesObjs[z].votes) - k);
+        //         }
+        //         gamesObjs[z].positions.sort();
+        //     } 
+        //     else {
+        //         nextTotal += parseInt(gamesObjs[z].votes);
+        //         gamesObjs[z].running_total = nextTotal;
+        //         for (let k = nextTotal - gamesObjs[z].votes; k < gamesObjs[z].running_total; k++) {
+        //             gamesObjs[z].positions.push(k + 1);
+        //         }
+        //     }
+        // }
     }
 
     async function updateVotes (e, gameName, gameVotes) {
@@ -105,22 +89,19 @@ export default function Gameslist () {
                 }
             }
 
-            console.log("testing git access");
-            setVoteTotals(userGames);
-    
-           await axios(config)
-                .then(result => {
-                    console.log("update vote: ", result);
-                }).catch(err => {
-                    console.log("update vote Error: ", err);
-                })
+        await axios(config)
+            .then(result => {
+                console.log("update votes result: ", result);
+            }).catch(err => {
+                console.log("update vote Error: ", err);
+            })
         } else {
             alert("Input field cannot be empty. Please enter a number. Thanks.");
             return;
         }
     }
 
-    function deleteGame (e, gameName) {
+    async function deleteGame (e, gameName) {
         e.preventDefault();
         const config = {
             method: "delete",
@@ -132,7 +113,8 @@ export default function Gameslist () {
                 }
             }
         }
-        axios(config)
+
+       await axios(config)
             .then(result => {
                 console.log("deleted game: ", result);
             }).catch(err => {
@@ -154,15 +136,15 @@ export default function Gameslist () {
                     <h3>Current Votes</h3>
                     <p className="gameslist__game__votes">{game.votes}</p>
                 </div>
-                <Form onSubmit={(e) => {updateVotes(e, game.name, game.votes);}}>
+                <Form onSubmit={(e) => {updateVotes(e, game.name, game.votes); window.location.reload();}}>
                     <Form.Label className="gameslist__game__votes-label">Change To</Form.Label>
                     <Form.Control
                         className="gameslist__game__votes" 
                         type="number"
                         />
                     <div className="gameslist__game__buttons">
-                        <Button onClick={(e) => {updateVotes(e, game.name, game.votes);}}>Submit</Button>
-                        <Button onClick={(e) => {deleteGame(e, game.name); window.location.reload();}}>Delete</Button>
+                        <Button onClick={(e) => {updateVotes(e, game.name, game.votes); window.location.reload(); }}>Submit</Button>
+                        <Button onClick={(e) => {deleteGame(e, game.name); window.location.reload(); }}>Delete</Button>
                     </div>
                 </Form>
             </div>

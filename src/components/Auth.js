@@ -5,10 +5,15 @@ import Cookies from "universal-cookie";
 
 import AuthNav from "./containers/AuthNav/AuthNav";
 import UserContext from "../UserContext";
+import { parse } from "dotenv";
 
 export default function Auth () {
     const { userInfo } = useContext(UserContext);
-    const { email, setEmail, password, setPassword, login, setLogin, userEmail, setUserEmail } = userInfo;   
+    const { email, setEmail, 
+            password, setPassword, 
+            login, setLogin, 
+            userEmail, setUserEmail,
+            userGames, setUserGames } = userInfo;   
     const cookies = new Cookies();
     const token = cookies.get("token");
     const [message, setMessage] = useState("");

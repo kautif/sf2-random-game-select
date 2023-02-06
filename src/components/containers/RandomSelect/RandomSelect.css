@@ -1,0 +1,9 @@
+.randomselect__container {
+    display: flex;
+    background-color: black;
+}
+
+.randomselect__game img {
+    width: 100px;
+    height: 100px;
+}

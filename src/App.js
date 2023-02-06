@@ -10,18 +10,19 @@ import Auth from './components/Auth';
 import ProtectedRoute from './components/ProtectedRoute';
 import FindGame from './components/containers/FindGame/FindGame';
 import Gameslist from './components/containers/Gameslist/Gameslist';
+import RandomSelect from './components/containers/RandomSelect/RandomSelect';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Route exact path="/" component={CoverComponent}></Route>
-        <Route path="/random_select" component={GameIconContainer}></Route>
         <Route path="/continue" component={Continue}></Route>
         <Route path="/open" component={FreeComponent}></Route>
         <ProtectedRoute exact path="/user" component={ Auth } />
         <ProtectedRoute path="/user/find_game" component={ FindGame } />
         <ProtectedRoute path="/user/gameslist" component={ Gameslist } />
+        <ProtectedRoute path="/user/random_select" component={RandomSelect} />
       </Router>
       {/* <MusicComponent /> */}
       {/* <GameIconContainer /> */}
