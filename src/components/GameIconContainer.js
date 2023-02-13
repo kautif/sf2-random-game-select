@@ -82,8 +82,7 @@ import witcher_3 from '../img/witcher_3.jpg';
 
 import select from '../sounds/select_fighter.mp3';
 import selected from '../sounds/street_fighter_choose.mp3';
-import OnStageComponent from './OnStageComponent';
-import MusicComponent from './MusicComponent';
+import MusicComponent from './containers/MusicUI/MusicComponent';
 
 // Calculating weighted random selection
 // - Calculate total up until the concerned/current game
@@ -773,7 +772,7 @@ export default function GameIconContainer () {
                         <audio id="select" src={select}></audio>
                         <audio id="selected" src={selected}></audio>
                     </div>
-                    <OnStageComponent />
+                    {/* <OnStageComponent /> */}
                 </div>
                 <p id="random-select-btn" onClick={() => randomSelect()}>Random Select</p>   
             </div>

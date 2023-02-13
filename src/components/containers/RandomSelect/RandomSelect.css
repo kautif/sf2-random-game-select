@@ -1,9 +1,26 @@
-.randomselect__container {
+.randomselect {
+    position: relative;
+}
+
+.randomselect__games__container {
+    position: relative;
     display: flex;
     background-color: black;
+    flex-wrap: wrap;
+    width: 60%;
 }
 
 .randomselect__game img {
     width: 100px;
     height: 100px;
+}
+
+.randomselect__game-selected {
+    border: 3px solid white;
+}
+
+#random-select-btn {
+    position: absolute;
+    bottom: -25%;
+    left: 21%;
 }

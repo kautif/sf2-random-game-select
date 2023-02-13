@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
-import soundFile from '../sounds/sf2_char_select.mp3';
-import play from '../img/play.png';
-import pause from '../img/pause.png';
-import stop from '../img/stop.png';
-import Sound from 'react-sound';
+import React from 'react';
+import soundFile from '../../../sounds/sf2_char_select.mp3';
 
 function handleMusic () {
     document.getElementById("audio-play").play();

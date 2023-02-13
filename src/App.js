@@ -1,7 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import GameIconContainer from './components/GameIconContainer';
-import MusicComponent from './components/MusicComponent';
 import { BrowserRouter as Router, Route, Link, BrowserRouter, Switch } from "react-router-dom";
 import CoverComponent from './components/CoverComponent';
 import Continue from './components/containers/Continue/Continue';
