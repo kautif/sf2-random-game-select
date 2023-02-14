@@ -6,6 +6,7 @@ import UserContext from '../../../UserContext';
 import OnStageComponent from "../OnStage/OnStage";
 import select from '../../../sounds/select_fighter_cut.mp3';
 import selected from '../../../sounds/street_fighter_choose.mp3';
+import choose from '../../../sounds/street_fighter_choose.mp3';
 
 let votesArr = [];
 // let gameIndex = 0;
@@ -14,9 +15,8 @@ export default function RandomSelect () {
     const localDataEmail = JSON.parse(localData);
     const { userInfo } = useContext(UserContext);
     const {userGames, setUserGames } = userInfo;
-    // const [selected, setSelected] = useState(false);
     const [gameIndex, setGameIndex] = useState(0);
-    const gameRef = useRef([]);
+    // const [randomCount, setRandomCount] = useState(0);
 
     async function getGames () {
         await axios("http://localhost:4000/getgames", {
@@ -30,23 +30,68 @@ export default function RandomSelect () {
         })
     }
 
-    function randomSelect() {
-        let randomGame;
-        function randomizerInterval() {
-            randomGame = Math.floor(Math.random() * (document.getElementsByClassName('gameIcon-single-container').length - 1) + 1);
-            // showSelection(randomGame);
-            // updateStage(randomGame);
-            document.getElementById('select').play();
-            document.getElementById('select').currentTime = 0;
+    let randomGame;
+    let preRandoArr = [];
+
+    function preRandomize () {
+        for (let i = 0; i < userGames.length - 1; i++) {
+            randomGame = Math.floor(Math.random() * (userGames.length - 1) + 1);
+            preRandoArr.push(randomGame);
         }
     }
 
-    function itemsPerRow() {
+    preRandomize();
 
+    let totalVotes = 0;
+    let allVotesArr = [];
+    function countAndArrangeVotes () {
+        for (let i = 0; i < userGames.length - 1; i++) {
+            totalVotes += parseFloat(userGames[i].votes)
+            for (let v = 0; v < userGames[i].votes; v++) {
+                allVotesArr.push(i);
+            }
+        }
+    }
+
+    if (userGames.length > 0) {
+        countAndArrangeVotes();
+    }
+
+
+
+    function selectWinner() {
+        let finalizeWinner = Math.floor(Math.random() * (allVotesArr.length - 1) + 1);
+        setGameIndex(allVotesArr[finalizeWinner]);
+    }
+
+    function randomSelect() {
+        let i = 0;
+        function setNextGameIndex() {
+            if (i < preRandoArr.length - 1) {
+                setGameIndex((prevGameIndex) => {
+                    i++;
+                    if (i < userGames.length) {
+                        setTimeout(setNextGameIndex, 200);
+                    }
+                    return preRandoArr[i - 1];
+                });
+                setGameIndex((prevGameIndex) => preRandoArr[i]);
+                document.getElementById('select').play();
+                document.getElementById('select').currentTime = 0;
+            }
+
+            if (i === preRandoArr.length - 1) {
+                selectWinner();
+                document.getElementById('choose').play();
+                document.getElementById('choose').currentTime = 0;
+            }
+        }
+        setNextGameIndex();
     }
 
     useEffect(() => {
         getGames();
+        preRandomize();
     }, [])
 
     useEffect(() => {
@@ -91,25 +136,11 @@ export default function RandomSelect () {
                 setGameIndex(Math.min(gameIndex + itemsPerRow, gameArrEnd))
             }
         }
-
-        // highlightGame();
     }, [userGames, gameIndex])
-
-
-    // 2/7/23: Was attempting to make width of game icons change dynamically based on width of container, but
-        // it wasn't working 
-    // document.addEventListener("DOMContentLoaded", () => {
-    //     let containerWidth = document.getElementsByClassName("randomselect__container")[0].clientWidth;
-    //     console.log("containerWidth: ", containerWidth);
-    //     let gameIconWidth = containerWidth / 10;
-    //     setIconWidth(gameIconWidth);
-    //     iconWidth && setIconDimensions(iconWidth);
-    // })
 
     return (
         <div className="randomselect">
             <div className="randomselect__games__container">
-                {/* {console.log("userGames: ", userGames)} */}
                 {userGames && userGames.map((game, i) => {
                     for (let v = 0; v < game.votes; v++) {
                         votesArr.push(i);
@@ -123,14 +154,17 @@ export default function RandomSelect () {
                         </div>
                     )
                 })}
-                <p id="random-select-btn">Random Select</p>
+                <p id="random-select-btn" onClick={() => {randomSelect()}}>Random Select</p>
                 <audio id="select" src={select}></audio>
                 <audio id="selected" src={selected}></audio>
+                <audio id="choose" src={choose}></audio>
             </div>
             {userGames.length && <OnStageComponent 
                 stageName={userGames[gameIndex].name}
                 stage={userGames[gameIndex].img_url}
-                votes={userGames[gameIndex].votes} />}
+                votes={userGames[gameIndex].votes}
+                stats={Math.round(userGames[gameIndex].votes / totalVotes * 100)}
+                total={totalVotes} />}
         </div>
     )
 }

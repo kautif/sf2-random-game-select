@@ -15,7 +15,7 @@ function App() {
       <Router>
         <Route exact path="/" component={CoverComponent}></Route>
         <Route path="/continue" component={Continue}></Route>
-        <Route path="/open" component={FreeComponent}></Route>
+        {/* <Route path="/open" component={FreeComponent}></Route> */}
         <ProtectedRoute exact path="/user" component={ Auth } />
         <ProtectedRoute path="/user/find_game" component={ FindGame } />
         <ProtectedRoute path="/user/gameslist" component={ Gameslist } />

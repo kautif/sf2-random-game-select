@@ -8,8 +8,8 @@ export default function OnStageComponent (props) {
             <h1 id="stage-name" class="game-names">{props.stageName}</h1>
             <img id="on-stage-img" class="game-images" src={props.stage}/>
             <div className="on-stage__votes-container">
-                <h1 id="vote-ratio" class="game-votes"><span id="game-vote">{props.votes}</span> votes out of <span id="vote-total">total</span></h1>
-                <h1 id="stage-stats" class="game-totals">Win Chance: 0 {props.stats}</h1>
+                <h1 id="vote-ratio" class="game-votes"><span id="game-vote">{props.votes}</span> votes out of <span id="vote-total">{props.total}</span></h1>
+                <h1 id="stage-stats" class="game-totals">Win Chance: {props.stats}%</h1>
             </div>
         </div>
     )
