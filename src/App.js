@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, BrowserRouter, Switch } from "react-router-dom";
-import CoverComponent from './components/CoverComponent';
+import CoverComponent from './components/containers/Cover/CoverComponent';
 import Continue from './components/containers/Continue/Continue';
-import FreeComponent from './components/FreeComponent';
 import Auth from './components/Auth';
 import ProtectedRoute from './components/ProtectedRoute';
 import FindGame from './components/containers/FindGame/FindGame';

@@ -56,6 +56,7 @@ export default function Login () {
                         autofocus
                         type="email"
                         value={email}
+                        placeholder="Enter email address..."
                         onChange={e => {setEmail(e.target.value)}}
                         />
                 </Form.Group>
@@ -65,6 +66,7 @@ export default function Login () {
                     <Form.Control
                         type="password"
                         value={password}
+                        placeholder="Enter password..."
                         onChange={e => setPassword(e.target.value)}/>
                 </Form.Group>
                 <div className="text-center">

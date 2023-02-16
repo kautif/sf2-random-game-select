@@ -46,7 +46,8 @@ export default function SignUp () {
                     <Form.Control 
                         type="email" 
                         name="email" 
-                        value={email} 
+                        value={email}
+                        placeholder="Enter email address..." 
                         onChange={e => setEmail(e.target.value)}>
                     </Form.Control>
                 </Form.Group>
@@ -57,6 +58,7 @@ export default function SignUp () {
                         type="password" 
                         name="password"
                         value={password}
+                        placeholder="Enter password..."
                         onChange={e => setPassword(e.target.value)} >
                     </Form.Control>
                 </Form.Group>

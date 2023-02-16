@@ -9,7 +9,6 @@ import { Button } from "react-bootstrap";
 export default function FindGame () {
     const { userInfo } = useContext(UserContext);
     const { email, setEmail, password, setPassword, login, setLogin, userEmail, setUserEmail } = userInfo;
-
     const [search, setSearch] = useState("");
     const [games, setGames] = useState([]);
     function getGames (e) {
@@ -74,10 +73,11 @@ export default function FindGame () {
     }, [email])
 
     return (
-        <div>
-            <AuthNav />
+        <div className="sf2-findgame__container">
+            <AuthNav username={userEmail && userEmail.substring(0, userEmail.indexOf("@"))} />
+            <h1>Find a Game</h1>
             <form onSubmit={(e) => getGames(e)}>
-                <input type="text"  value={search} onChange={(e) => setSearch(e.target.value)}/>
+                <input type="text"  placeholder="Look for a game..." value={search} onChange={(e) => setSearch(e.target.value)}/>
                 <Button onClick={(e) => getGames(e)}>Submit</Button>
             </form>
             <div className="sf2-find-game__allresults">

@@ -5,20 +5,15 @@ import Cookies from "universal-cookie";
 
 import AuthNav from "./containers/AuthNav/AuthNav";
 import UserContext from "../UserContext";
-import { parse } from "dotenv";
+import Gameslist from "./containers/Gameslist/Gameslist";
 
 export default function Auth () {
     const { userInfo } = useContext(UserContext);
-    const { email, setEmail, 
-            password, setPassword, 
-            login, setLogin, 
-            userEmail, setUserEmail,
-            userGames, setUserGames } = userInfo;   
+    const { userEmail, setUserEmail } = userInfo;   
     const cookies = new Cookies();
     const token = cookies.get("token");
     const [message, setMessage] = useState("");
 
-    console.log("token: ", token);
 // 1/9/23: Perhaps do an axios request to get the user object and display their info on their account page
 
     useEffect(() => {
@@ -42,7 +37,6 @@ export default function Auth () {
 
             const localData = window.localStorage.getItem('email');
             setUserEmail(JSON.parse(localData));
-            console.log("localData: ", localData);
     }, [])
 
     const logout = () => {
@@ -54,10 +48,11 @@ export default function Auth () {
 
     return (
         <div>
-            <AuthNav />
-            <h1>Welcome {userEmail && userEmail.substring(0, userEmail.indexOf("@"))}</h1>
-            <h3 className="text-center text-danger">{message}</h3>
-            <Button type="submit" variant="danger" onClick={() => logout()}>Logout</Button>
+            <AuthNav username={userEmail && userEmail.substring(0, userEmail.indexOf("@"))} logout={() => logout()} />
+            {/* <h1>Welcome {userEmail && userEmail.substring(0, userEmail.indexOf("@"))}</h1> */}
+            <Gameslist />
+            {/* <h3 className="text-center text-danger">{message}</h3> */}
+            {/* <Button type="submit" variant="danger" onClick={() => logout()}>Logout</Button> */}
         </div>
     )
 }

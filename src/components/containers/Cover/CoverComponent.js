@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import sf_logo from '../img/sf_logo.png';
-import sf_intro from '../img/SF2-Intro-no-loop.gif';
-import sf_theme from '../sounds/sf2_theme.mp3';
-import sf_coin from '../sounds/sf_coin.mp3';
+import React from 'react';
+// import sf_logo from '../img/sf_logo.png';
+// import sf_intro from '../img/SF2-Intro-no-loop.gif';
+import sf_logo from '../../../img/sf_logo.png';
+import sf_intro from '../../../img/SF2-Intro-no-loop.gif';
+import sf_theme from '../../../sounds/sf2_theme.mp3';
+import sf_coin from '../../../sounds/sf_coin.mp3';
+import './Cover.css';
 
 import { BrowserRouter as Router, Route, Link, BrowserRouter, Switch, useHistory } from "react-router-dom";
-import GameIconContainer from './GameIconContainer';
-import Nav from './Nav';
+import Nav from '../../Nav';
 
 function fade(element) {
     var op = 1;  // initial opacity
@@ -90,10 +92,12 @@ export default function CoverComponent () {
                         <h1 className="cover-logo">Random Game</h1>
                         <h1 className="cover-logo cover-select">Select</h1>
                     </div>
-                    <div className="cover-continue" onClick={playCoin}>
-                        {/* <Link to="/random_select"></Link> */}
+                    <div className="cover-continue">
+                        <Link to="/continue"><h1 onClick={playCoin}>Continue</h1></Link>
+                        {/* <ul className="sf-nav">
+                            <li><Link to="/continue">Continue</Link></li>
+                        </ul> */}
                         <audio id="cover-coin" src={sf_coin}></audio>
-                        <Nav />
                     </div>
                 </div>
             </div>

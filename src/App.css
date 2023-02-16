@@ -74,22 +74,22 @@ h1, h2, p {
   bottom: 0%;
 }
 
-.music-container {
+/* .music-container {
   text-align: center;
   width: 51%;
   padding-top: 2%;
-}
+} */
 
-.fas {
+/* .fas {
   width: 30px;
   font-size: 2em;
   color: white;
-}
+} */
 
-.fa-pause,
+/* .fa-pause,
 .fa-stop {
   margin-left: 3%;
-}
+} */
 
 #random-select-btn {
   background: -webkit-linear-gradient(#FDFD00 50%, #dd1d25 65%);

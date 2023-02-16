@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 
 export default function Nav () {
         return (
-            <div>
+            <div className="sf-nav-container">
                 <ul className="sf-nav">
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/register">Register</Link></li>
+                    <li><Link to="/continue">Continue</Link></li>
                 </ul>
             </div>
         )

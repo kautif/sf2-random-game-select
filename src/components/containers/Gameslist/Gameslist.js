@@ -141,6 +141,7 @@ export default function Gameslist () {
                     <Form.Control
                         className="gameslist__game__votes" 
                         type="number"
+                        placeholder="Update to desired number of votes. Numbers only"
                         />
                     <div className="gameslist__game__buttons">
                         <Button onClick={(e) => {updateVotes(e, game.name, game.votes); window.location.reload(); }}>Submit</Button>
@@ -152,9 +153,8 @@ export default function Gameslist () {
      })
 
     return (
-            <div>
-                <AuthNav />
-                Gameslist
+            <div className="sf2-gameslist-container">
+                <h1>Current Gameslist</h1>
                 <div className="sf2-gameslist__allgames">
                     {arrangedGames}
                 </div>

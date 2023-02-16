@@ -7,6 +7,9 @@ import OnStageComponent from "../OnStage/OnStage";
 import select from '../../../sounds/select_fighter_cut.mp3';
 import selected from '../../../sounds/street_fighter_choose.mp3';
 import choose from '../../../sounds/street_fighter_choose.mp3';
+import MusicComponent from '../MusicUI/MusicComponent';
+import coin from "../../../sounds/sf_coin.mp3";
+import AuthNav from '../AuthNav/AuthNav';
 
 let votesArr = [];
 // let gameIndex = 0;
@@ -14,7 +17,8 @@ export default function RandomSelect () {
     const localData = window.localStorage.getItem('email');
     const localDataEmail = JSON.parse(localData);
     const { userInfo } = useContext(UserContext);
-    const {userGames, setUserGames } = userInfo;
+    const {userGames, setUserGames,
+            userEmail, setUserEmail} = userInfo;
     const [gameIndex, setGameIndex] = useState(0);
     // const [randomCount, setRandomCount] = useState(0);
 
@@ -140,7 +144,10 @@ export default function RandomSelect () {
 
     return (
         <div className="randomselect">
+            <AuthNav username={userEmail && userEmail.substring(0, userEmail.indexOf("@"))} />
+            <MusicComponent />
             <div className="randomselect__games__container">
+                {/* {document.getElementById("audio-coin") && document.getElementById("audio-coin").play()} */}
                 {userGames && userGames.map((game, i) => {
                     for (let v = 0; v < game.votes; v++) {
                         votesArr.push(i);
@@ -154,10 +161,11 @@ export default function RandomSelect () {
                         </div>
                     )
                 })}
-                <p id="random-select-btn" onClick={() => {randomSelect()}}>Random Select</p>
+                <p id="random-select-btn" onClick={() => {randomSelect(); document.getElementById("audio-coin").play()}}>Random Select</p>
                 <audio id="select" src={select}></audio>
                 <audio id="selected" src={selected}></audio>
                 <audio id="choose" src={choose}></audio>
+                <audio id="audio-coin" src={coin}></audio>
             </div>
             {userGames.length && <OnStageComponent 
                 stageName={userGames[gameIndex].name}
