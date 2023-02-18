@@ -19,9 +19,10 @@ export default function Gameslist () {
 
     const localData = window.localStorage.getItem('email');
     const localDataEmail = JSON.parse(localData);
+    const backendURL = process.env.REACT_BACKEND || "http://localhost:4000"
 
     async function getGames() {
-        await axios("http://localhost:4000/getgames", {
+        await axios(backendURL + "/getgames", {
             params: {
                 email: localDataEmail
             }
