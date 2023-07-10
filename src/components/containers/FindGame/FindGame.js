@@ -11,6 +11,7 @@ export default function FindGame () {
     const { email, setEmail, password, setPassword, login, setLogin, userEmail, setUserEmail } = userInfo;
     const [search, setSearch] = useState("");
     const [games, setGames] = useState([]);
+    const backendURL = process.env.REACT_APP_NODE_BACKEND || "http://localhost:4000"
     function getGames (e) {
         e.preventDefault();
         axios({
@@ -47,10 +48,12 @@ export default function FindGame () {
             img_url: gameImg,
             votes: 1
         }
+
+        
         gamesArr.push(gameObj)
         let config = {
             method: "post",
-            url: "http://localhost:4000/addgame",
+            url: `${backendURL}/addgame`,
             data: {
                 localData,
                 games: gameObj

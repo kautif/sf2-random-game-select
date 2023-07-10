@@ -11,15 +11,14 @@ export default function SignUp () {
     const [password, setPassword] = useState("");
     const { userInfo } = useContext(UserContext);
     const { login, setLogin, userEmail, setUserEmail } = userInfo;
-
-
+    const backendURL = process.env.REACT_APP_NODE_BACKEND || "http://localhost:4000";
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const config = {
             method: "post",
-            url: "http://localhost:4000/register",
+            url: `${backendURL}/register`,
             data: {
                 email,
                 password

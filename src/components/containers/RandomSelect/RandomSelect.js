@@ -21,9 +21,10 @@ export default function RandomSelect () {
             userEmail, setUserEmail} = userInfo;
     const [gameIndex, setGameIndex] = useState(0);
     // const [randomCount, setRandomCount] = useState(0);
+    const backendURL = process.env.REACT_APP_NODE_BACKEND || "http://localhost:4000"
 
     async function getGames () {
-        await axios("http://localhost:4000/getgames", {
+        await axios(`${backendURL}/getgames`, {
             params: {
                 email: localDataEmail
             }
