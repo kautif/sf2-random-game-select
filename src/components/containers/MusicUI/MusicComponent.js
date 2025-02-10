@@ -24,7 +24,7 @@ export default function MusicComponent () {
     
     return (
         <div className="music-container">
-            {document.getElementById("audio-play") && handleMusic()}
+            {/* {document.getElementById("audio-play") && handleMusic()} */}
             <audio id="audio-play" src={soundFile} loop="loop" autoPlay onPlay={() => document.getElementById("audio-play").volume = 0.25}></audio>
             <i className="fas fa-play"  onClick={() => handleMusic()}></i>
             <i className="fas fa-pause" onClick={() => pauseMusic()}></i>

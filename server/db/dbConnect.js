@@ -3,7 +3,7 @@ require('dotenv').config();
 
 async function dbConnect () {
     mongoose.connect(
-        process.env.DB_URL
+        process.env.REACT_APP_NODE_BACKEND
     ).then(() => {
         console.log("connected to DB");
     }).catch((error) => {
